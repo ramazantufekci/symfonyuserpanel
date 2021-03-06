@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DenemeController!{% endblock %}
+
+{% block body %}
+
+<div id="app">
+	<div class="container-fluid">
+		<div class="row mt4">
+			<div class="col-lg-12 bg-info">
+				<p class="text-center text-light">Ramazan</p>
+			</div>
+		</div>
+	</div>
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col-lg-6">
+				<h3 class="text-info">Kullanıcı listesi</h3>
+			</div>
+			<div class="col-lg-6">
+				<button class="btn btn-info text-light float-end" @click="showAddModal=true"><i class="fas fa-user"></i>&nbsp;&nbsp;Kullanıcı Ekle</button>
+			</div>
+		</div>
+		<hr class="text-info"/>
+		<div class="alert alert-danger" v-if="errorMsg">
+			Error Message
+		</div>
+		<div class="alert alert-success" v-if="successMsg">
+			Success Message
+		</div>
+	</div>
+	
+	<div class="container">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr class="text-center bg-info text-light">
+					<th>ID</th>
+					<th>İsim</th>
+					<th>Mail Adresi</th>
+					<th>Telefon Numarası</th>
+					<th>Düzenle</th>
+					<th>Sil</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="text-center">
+					<th>1</th>
+					<th>Ramazan</th>
+					<th>rt@tr.com</th>
+					<th>1234567</th>
+					<th><a href="#" class="text-success" @click="showEditModal=true"><i class="fas fa-edit"></i></a></th>
+					<th><a href="#" class="text-danger" @click="showDeleteModal=true"><i class="fas fa-trash-alt"></i></a></th>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- kullanici ekle-->
+	<div id="overlay" v-if="showAddModal">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title">Kullanıcı Ekle</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="showAddModal=false"></button>
+		  </div>
+		  <div class="modal-body p-4">
+			<form action="#" method="post">
+				<div class="form-group mb-3">
+					<input type="text" name="user" class="form-control" placeholder="Name">
+				</div>
+				<div class="form-group mb-3">
+					<input type="email" name="email" class="form-control" placeholder="Mail Address">
+				</div>
+				<div class="form-group mb-3">
+					<input type="tel" name="phone" class="form-control" placeholder="Phone">
+				</div>
+				<div class="form-group">
+					<button class="btn btn-info btn-lg form-control text-light" @click="showAddModal=false">Kullanıcı Ekle</button>
+				</div>
+			</form>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- kullanici ekle son-->
+	<!-- kullanici guncelle-->
+	<div id="overlay" v-if="showEditModal">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title">Bilgileri Güncelle</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="showEditModal=false"></button>
+		  </div>
+		  <div class="modal-body p-4">
+			<form action="#" method="post">
+				<div class="form-group mb-3">
+					<input type="text" name="user" class="form-control" placeholder="Name">
+				</div>
+				<div class="form-group mb-3">
+					<input type="email" name="email" class="form-control" placeholder="Mail Address">
+				</div>
+				<div class="form-group mb-3">
+					<input type="tel" name="phone" class="form-control" placeholder="Phone">
+				</div>
+				<div class="form-group">
+					<button class="btn btn-info btn-lg form-control text-light" @click="showEditModal=false">Bilgileri Güncelle</button>
+				</div>
+			</form>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- kullanici guncelle son-->
+	<!-- kullanici sil-->
+	<div id="overlay" v-if="showDeleteModal">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title">Kullanıcı sil</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="showDeleteModal=false"></button>
+		  </div>
+		  <div class="modal-body p-4">
+			<h4 class="text-danger">Kullanıcıyı silmek istediğine emin misin?</h3>
+			<button class="btn btn-danger" @click="showDeleteModal=false">Evet</button>
+			&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-success" @click="showDeleteModal=false">Hayır</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<!-- kullanici sil son-->
+
+</div>
+		
+{% endblock %}
